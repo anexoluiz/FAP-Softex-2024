@@ -21,6 +21,8 @@ root.title("Soma de dois números")
 # Desativando o resize e o maximize
 root.resizable(False, False)
 root.attributes("-toolwindow", True)
+root.attributes("-topmost", True)  # Sempre no topo por que não tem icone na taskbar
+
 
 # Criar os elementos da janela
 label1 = tk.Label(root, text="Digite o primeiro número:")
