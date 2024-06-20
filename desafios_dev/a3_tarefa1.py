@@ -28,4 +28,6 @@ def atualizar_soma(*args):
     except ValueError:
         w["resultado_label"].config(text="")
 
-w["entry1"].trace_add("write", atualizar_soma)
+w["entry1"].bind("<KeyRelease>", atualizar_soma)
+
+janela.mainloop()
