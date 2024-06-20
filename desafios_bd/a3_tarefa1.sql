@@ -116,3 +116,28 @@ SELECT
 FROM
     membros
     INNER JOIN tarefas ON membros.membro_id = tarefas.membro_id;
+
+/* Selecionandos todos os membros com nome iniciado em A */
+SELECT
+    *
+FROM
+    membros
+WHERE
+    nome LIKE 'A%';
+
+/* Selecionandos todos os cargos com e */
+SELECT
+    *
+FROM
+    membros
+WHERE
+    cargo LIKE '%e%';
+
+SELECT
+    nome,
+    cargo
+FROM
+    membros
+WHERE
+    membros.nome LIKE '%a'
+    AND membros.cargo LIKE 'D%'
