@@ -1,7 +1,7 @@
 import tkinter as tk
 
 janela = tk.Tk()
-janela.title("Média de anual")
+janela.title("Média anual")
 janela.resizable(False, False)
 janela.attributes("-toolwindow", True)
 janela.attributes("-topmost", True)
@@ -18,7 +18,7 @@ for i in range(0, 4):
 w["resultado_label"] = tk.Label(janela, text="")
 w["resultado_label"].grid(row=len(labels), columnspan=2, padx=10, pady=5)
 
-# Função para atualizar o maior número
+# Função para atualizar a media
 def atualizar_media(*args):
     try:
         n1 = w["entry0"].get()
