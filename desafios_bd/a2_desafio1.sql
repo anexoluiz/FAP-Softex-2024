@@ -1,29 +1,33 @@
 CREATE TABLE
-    membros (membro_id INT PRIMARY KEY, nome VARCHAR(20), cargo VARCHAR(20), genero char(1));
+    membros (membro_id INT PRIMARY KEY, nome VARCHAR(20), cargo VARCHAR(20), genero CHAR(1));
 
 CREATE TABLE
     tarefas (
         tarefa_id INT PRIMARY KEY,
         descricao VARCHAR(50),
-        data_ini date,
-        data_fim date,
+        data_ini DATE,
+        data_fim DATE,
         membro_id INT,
         FOREIGN KEY (membro_id) REFERENCES membros (membro_id)
     );
 
-INSERT into
+INSERT INTO
     membros (membro_id, nome, cargo, genero)
 VALUES
     (3, 'Luiz', 'Analista', 'F');
 
-/* change cargo from varchar20 to varchar60
-pois alguns dos cargos abaixo possuem mais
-de 20 caracteres */
+/* Alterando o tamanho da coluna cargo
+pois alguns dos cargos abaixo possuem
+mais de 20 caracteres */
 ALTER TABLE membros MODIFY cargo VARCHAR(60);
 
-INSERT into
+/* Inserindo alguns membros */
+INSERT INTO
     membros (membro_id, nome, cargo, genero)
 VALUES
+    (1, 'José da Silva', 'Analista de Sistemas', 'M'),
+    (2, 'Maria Oliveira', 'Analista de Banco de Dados', 'F'),
+    (3, 'Laisa Costa', 'Analista de Sistemas', 'F'),
     (4, 'João Silva', 'Desenvolvedor', 'M'),
     (5, ' Maria Santos ', 'Analista de Banco de Dados', 'F'),
     (6, 'Pedro Oliveira', ' Engenheiro de Software', 'M'),
