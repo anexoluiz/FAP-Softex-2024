@@ -42,7 +42,7 @@ CREATE TABLE
     consultas (
         consulta_id INT PRIMARY KEY,
         datahora DATETIME,
-        diagnóstico VARCHAR(100),
+        diagnostico VARCHAR(100),
         crm INT,
         cpf INT,
         FOREIGN KEY (crm) REFERENCES medicos (crm),
