@@ -11,7 +11,6 @@ grid1 = {}
 grid2 = {}
 grid3 = {}
 operation = tk.StringVar()
-label0.grid(row=0, column=0, columnspan=4)
 grid1["radiosoma"] = tk.Radiobutton(janela, text="Soma", value="soma", variable=operation)
 grid1["radiosub"] = tk.Radiobutton(janela, text="Subtração", value="sub", variable=operation)
 grid1["radiomult"] = tk.Radiobutton(janela, text="Multiplicação", value="mult", variable=operation)
