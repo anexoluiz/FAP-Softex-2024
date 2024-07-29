@@ -11,7 +11,7 @@ janela.resizable(False, False)
 janela.attributes("-toolwindow", True)
 janela.attributes("-topmost", True)
 
-labelAdicionar = tk.Label(janela, text="Adicionar produto")
+labelAdicionar = tk.Label(janela, text="Produto: ")
 inputAdicionar = tk.Entry(janela)
 labelAdicionar.grid(row=0, column=0, padx=5, pady=5)
 inputAdicionar.grid(row=0, column=1, columnspan=8, padx=5, pady=5)
