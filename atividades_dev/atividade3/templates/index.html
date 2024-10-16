@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frente de Loja</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form, ul { margin-bottom: 20px; }
+        button { cursor: pointer; margin-left: 5px; }
+        ul { list-style-type: none; padding: 0; }
+    </style>
+</head>
+<body>
+    <h1>Frente de Loja</h1>
+    <form action="{{ url_for('adicionar') }}" method="post">
+        <label>Produto: <input type="text" name="produto" required></label>
+        <label>Estoque: <input type="number" name="estoque" required></label>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <ul>
+        {% for p in produtos %}
+            <li>
+                {{ p.nome }} (Estoque: {{ p.estoque }})
+                <form action="{{ url_for('editar', index=loop.index0) }}" method="post" style="display:inline;">
+                    <input type="text" name="produto" value="{{ p.nome }}" required>
+                    <input type="number" name="estoque" value="{{ p.estoque }}" required>
+                    <button type="submit">Editar</button>
+                </form>
+                <form action="{{ url_for('excluir', index=loop.index0) }}" method="get" style="display:inline;">
+                    <button type="submit">Excluir</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
