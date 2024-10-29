@@ -1,1 +1,4 @@
 .venv
+__pycache__
+# now the controllers __pycache__ ignore it
+controllers/__pycache__
