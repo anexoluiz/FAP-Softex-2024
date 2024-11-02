@@ -8,7 +8,7 @@ pedido_bp = Blueprint('pedido', __name__)
 @jwt_required()
 def criar_pedido():
     dados = request.json
-    if not all(key in dados for key in ('produto_id', 'quantidade', 'usuario_id', 'status')):
+    if not all(key in dados for key in ('produto', 'valor', 'desconto')):
         return jsonify({'erro': 'Faltam dados'}), 400
     
     produtos = Produto.query.all()
@@ -25,7 +25,7 @@ def criar_pedido():
 @jwt_required()
 def listar_pedidos():
     pedidos = Pedido.query.all()
-    return jsonify([{'id': p.id, 'produto_id': p.produto_id, 'quantidade': p.quantidade, 'usuario_id': p.usuario_id, 'status': p.status} for p in pedidos]), 200
+    return jsonify([{'id': pedidos.id, 'valor': pedidos.valor, 'desconto': pedidos.desconto} for p in pedidos]), 200
 
 @pedido_bp.route('/pedidos/<int:id>', methods=['PUT'])
 @jwt_required()
@@ -36,12 +36,11 @@ def atualizar_pedido(id):
     if not pedido:
         return jsonify({'erro': 'Pedido não encontrado'}), 404
     
-    pedido.produto_id = dados['produto_id']
-    pedido.quantidade = dados['quantidade']
-    pedido.usuario_id = dados['usuario_id']
+    pedido.valor = dados['valor']
+    pedido.desconto = dados['desconto']
     pedido.status = dados['status']
     db.session.commit()
-    return jsonify({'id': pedido.id, 'produto_id': pedido.produto_id, 'quantidade': pedido.quantidade, 'usuario_id': pedido.usuario_id, 'status': pedido.status}), 200
+    return jsonify({'id': pedido.id, 'valor': pedido.valor, 'desconto': pedido.desconto}), 200
 
 @pedido_bp.route('/pedidos/<int:id>', methods=['DELETE'])
 @jwt_required()

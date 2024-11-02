@@ -11,13 +11,13 @@ def criar_produto():
     novo_produto = Produto(nome=dados['nome'])
     db.session.add(novo_produto)
     db.session.commit()
-    return jsonify({'id': novo_produto.id, 'nome': novo_produto.nome}), 201
+    return jsonify({'id': novo_produto.id, 'nome': novo_produto.nome, 'categoria_id': novo_produto.categoria_id}), 201
 
 @produto_bp.route('/produto', methods=['GET'])
 @jwt_required()
 def listar_produtos():
     produtos = Produto.query.all()
-    return jsonify([{'id': p.id, 'nome': p.nome} for p in produtos]), 200
+    return jsonify([{'id': p.id, 'nome': p.nome, 'categoria_id': p.categoria_id} for p in produtos]), 200
 
 @produto_bp.route('/produto/<int:id>', methods=['PUT'])
 @jwt_required()
@@ -30,7 +30,7 @@ def atualizar_produto(id):
     
     produto.nome = dados['nome']
     db.session.commit()
-    return jsonify({'id': produto.id, 'nome': produto.nome}), 200
+    return jsonify({'id': produto.id, 'nome': produto.nome, 'categoria_id': produto.categoria_id}), 200
 
 @produto_bp.route('/produto/<int:id>', methods=['DELETE'])
 @jwt_required()

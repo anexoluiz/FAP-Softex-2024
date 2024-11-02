@@ -1,7 +1,7 @@
 from flask import Flask
 from models import db
 from config import Config
-from controllers import produto_bp, pedido_bp, usuario_bp, cliente_bp, login_bp
+from controllers import produto_bp, pedido_bp, usuario_bp, cliente_bp, login_bp, categoria_bp
 from flask_jwt_extended import JWTManager
 
 def criar_app():
@@ -16,7 +16,7 @@ def criar_app():
     with app.app_context():
         db.create_all()
 
-    for bp in [produto_bp, pedido_bp, usuario_bp, cliente_bp, login_bp]:	
+    for bp in [produto_bp, pedido_bp, usuario_bp, cliente_bp, login_bp, categoria_bp]:	
         app.register_blueprint(bp)
 
     @app.route('/')
